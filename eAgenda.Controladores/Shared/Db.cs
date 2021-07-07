@@ -20,7 +20,7 @@ namespace eAgenda.Controladores.Shared
 
         public static int Insert(string sql, Dictionary<string, object> parameters)
         {
-            if (connectionString.Contains("Sqlite"))
+            if (connectionString.Contains("SQLite"))
             {
                 SQLiteConnection connection = new SQLiteConnection(connectionString);
                 SQLiteCommand command = new SQLiteCommand(sql.AppendSelectIdentityLite(), connection);
@@ -44,7 +44,7 @@ namespace eAgenda.Controladores.Shared
 
         public static void Update(string sql, Dictionary<string, object> parameters = null)
         {
-            if (connectionString.Contains("Sqlite"))
+            if (connectionString.Contains("SQLite"))
             {
                 SQLiteConnection connection = new SQLiteConnection(connectionString);
                 SQLiteCommand command = new SQLiteCommand(sql, connection);
@@ -71,7 +71,7 @@ namespace eAgenda.Controladores.Shared
 
         public static List<T> GetAll<T>(string sql, ConverterDelegate<T> convert, Dictionary<string, object> parameters = null)
         {
-            if (connectionString.Contains("Sqlite"))
+            if (connectionString.Contains("SQLite"))
             {
                 SQLiteConnection connection = new SQLiteConnection(connectionString);
                 SQLiteCommand command = new SQLiteCommand(sql, connection);
@@ -107,7 +107,7 @@ namespace eAgenda.Controladores.Shared
 
         public static T Get<T>(string sql, ConverterDelegate<T> convert, Dictionary<string, object> parameters)
         {
-            if (connectionString.Contains("Sqlite"))
+            if (connectionString.Contains("SQLite"))
             {
                 SQLiteConnection connection = new SQLiteConnection(connectionString);
                 SQLiteCommand command = new SQLiteCommand(sql, connection);
@@ -137,7 +137,7 @@ namespace eAgenda.Controladores.Shared
 
         public static bool Exists(string sql, Dictionary<string, object> parameters)
         {
-            if (connectionString.Contains("Sqlite"))
+            if (connectionString.Contains("SQLite"))
             {
                 SQLiteConnection connection = new SQLiteConnection(connectionString);
                 SQLiteCommand command = new SQLiteCommand(sql, connection);
@@ -158,7 +158,6 @@ namespace eAgenda.Controladores.Shared
                 return numberRows > 0;
             }
         }
-
         #region Métodos Privados
         private static void SetParameters(this SqlCommand command, Dictionary<string, object> parameters)
         {
@@ -206,6 +205,5 @@ namespace eAgenda.Controladores.Shared
                     value == null;
         }
         #endregion
-
     }
 }

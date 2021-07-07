@@ -3,9 +3,7 @@ using eAgenda.Controladores.Shared;
 using eAgenda.Dominio.ContatoModule;
 using FluentAssertions;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
-using System;
 using System.Collections.Generic;
-using System.Text;
 
 namespace eAgenda.Tests.ContatoModule
 {
@@ -17,8 +15,8 @@ namespace eAgenda.Tests.ContatoModule
         public ControladorContatoTest()
         {
             controlador = new ControladorContato();
-            Db.Update("DELETE FROM [TBCOMPROMISSO]");
-            Db.Update("DELETE FROM [TBCONTATO]");
+            //Db.Update("DELETE FROM TBCOMPROMISSO");
+            //Db.Update("DELETE FROM TBCONTATO");
         }
 
         [TestMethod]

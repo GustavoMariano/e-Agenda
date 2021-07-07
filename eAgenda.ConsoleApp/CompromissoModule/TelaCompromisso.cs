@@ -111,7 +111,7 @@ namespace eAgenda.ConsoleApp.CompromissoModule
             Console.Write("Digite o assunto do compromisso: ");
             string assunto = Console.ReadLine();
 
-            Console.Write("Digite a data do compromisso: ");
+            Console.Write("Digite a data do compromisso [yyyy/MM/dd]: ");
             DateTime data = Convert.ToDateTime(Console.ReadLine());
 
             Console.Write("Digite a hora de inicio do compromisso [12:00]: ");
