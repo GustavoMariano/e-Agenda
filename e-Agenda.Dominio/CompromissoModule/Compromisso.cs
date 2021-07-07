@@ -80,7 +80,5 @@ namespace eAgenda.Dominio.CompromissoModule
 
             return resultadoValidacao;
         }
-
-
     }
 }

@@ -15,8 +15,8 @@ namespace eAgenda.Tests.ContatoModule
         public ControladorContatoTest()
         {
             controlador = new ControladorContato();
-            //Db.Update("DELETE FROM TBCOMPROMISSO");
-            //Db.Update("DELETE FROM TBCONTATO");
+            Db.Update("DELETE FROM TBCOMPROMISSO");
+            Db.Update("DELETE FROM TBCONTATO");
         }
 
         [TestMethod]

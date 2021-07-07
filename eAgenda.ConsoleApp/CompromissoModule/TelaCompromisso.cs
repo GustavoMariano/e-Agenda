@@ -119,7 +119,7 @@ namespace eAgenda.ConsoleApp.CompromissoModule
 
             TimeSpan horaInicio = new TimeSpan(int.Parse(strHoraInicio[0]), int.Parse(strHoraInicio[1]), 0);
 
-            Console.Write("Digite a hora de inicio do compromisso [12:00]: ");
+            Console.Write("Digite a hora de encerramento do compromisso [12:00]: ");
             string[] strHoraFim = Console.ReadLine().Split(':');
 
             TimeSpan horaFim = new TimeSpan(int.Parse(strHoraFim[0]), int.Parse(strHoraFim[1]), 0);

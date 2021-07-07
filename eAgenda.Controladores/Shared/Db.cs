@@ -84,6 +84,7 @@ namespace eAgenda.Controladores.Shared
                     var obj = convert(reader);
                     list.Add(obj);
                 }
+                reader.Close();
                 connection.Close();
                 return list;
             }
@@ -117,6 +118,7 @@ namespace eAgenda.Controladores.Shared
                 var reader = command.ExecuteReader();
                 if (reader.Read())
                     t = convert(reader);
+                reader.Close();
                 connection.Close();
                 return t;
             }

@@ -154,9 +154,7 @@ namespace eAgenda.Controladores.CompromissoModule
             string resultadoValidacao = registro.Validar();
 
             if (resultadoValidacao == "ESTA_VALIDO")
-            {
                 registro.Id = Db.Insert(sqlInserirCompromisso, ObtemParametrosCompromisso(registro));
-            }
 
             return resultadoValidacao;
         }
@@ -257,7 +255,7 @@ namespace eAgenda.Controladores.CompromissoModule
             parametros.Add("DATA", compromisso.Data);
             parametros.Add("HORAINICIO", compromisso.HoraInicio.Ticks);
             parametros.Add("HORATERMINO", compromisso.HoraTermino.Ticks);
-            parametros.Add("ID_CONTATO", compromisso.Contato?.Id);
+            parametros.Add("ID_CONTATO", Convert.ToInt32(compromisso.Contato?.Id));
 
             return parametros;
         }
