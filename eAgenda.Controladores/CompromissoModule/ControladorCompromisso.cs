@@ -182,8 +182,14 @@ namespace eAgenda.Controladores.CompromissoModule
 
             if (resultadoValidacao == "ESTA_VALIDO")
             {
-                registro.Id = id;
-                Db.Update(sqlEditarCompromisso, ObtemParametrosCompromisso(registro));
+                bool horarioOcupado = VerificarHorario(registro.Data, registro.HoraInicio, registro.HoraTermino);
+                if (horarioOcupado)
+                    resultadoValidacao = "Já há compromisso marcado nessa data e horário";
+                else
+                {
+                    registro.Id = id;
+                    Db.Update(sqlEditarCompromisso, ObtemParametrosCompromisso(registro));
+                }
             }
 
             return resultadoValidacao;

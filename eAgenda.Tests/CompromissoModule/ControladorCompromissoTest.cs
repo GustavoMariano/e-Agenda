@@ -6,6 +6,7 @@ using eAgenda.Dominio.ContatoModule;
 using FluentAssertions;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using System;
+using System.Collections.Generic;
 
 namespace eAgenda.Tests.CompromissoModule
 {
@@ -66,7 +67,7 @@ namespace eAgenda.Tests.CompromissoModule
             Contato novoContato;
             Input(out dataCompromisso, out dataInicio, out dataTermino, out novoContato);
 
-            var compromisso = new Compromisso("Assunto", "Local", "Link", dataCompromisso, dataInicio, dataTermino, novoContato);
+            var compromisso = new Compromisso("Assunto", "Local", "Link", dataCompromisso.AddDays(1), dataInicio, dataTermino, novoContato);
             controladorCompromisso.InserirNovo(compromisso);
 
             var novoCompromisso = new Compromisso("Assunto", "LocalEditado", "Link", dataCompromisso, dataInicio, dataTermino, novoContato);
@@ -77,6 +78,30 @@ namespace eAgenda.Tests.CompromissoModule
             //assert
             Compromisso compromissoAtualizado = controladorCompromisso.SelecionarPorId(compromisso.Id);
             compromissoAtualizado.Should().Be(novoCompromisso);
+        }
+        [TestMethod]
+        public void NaoDeveAtualizar_CompromissoDataJaUsada()
+        {
+            //arrange
+            DateTime dataCompromisso;
+            TimeSpan dataInicio, dataTermino;
+            Contato novoContato;
+            Input(out dataCompromisso, out dataInicio, out dataTermino, out novoContato);
+
+            var compromissoParaEditar = new Compromisso("Compromisso a ser editado", "Midi", "Presencial", DateTime.Now, dataInicio, dataTermino, novoContato);
+            controladorCompromisso.InserirNovo(compromissoParaEditar);
+
+            var compromissoUtilizandoData = new Compromisso("Compromisso usando data e hora", "Remoto", "meet.com/", dataCompromisso, dataInicio, dataTermino, novoContato);
+            controladorCompromisso.InserirNovo(compromissoUtilizandoData);
+
+            var compromissoEditadoDataJaUsada = new Compromisso("Compromisso repetindo data", "NDD", "Presencial", dataCompromisso, dataInicio, dataTermino, novoContato);
+
+            //action
+            controladorCompromisso.Editar(compromissoParaEditar.Id, compromissoEditadoDataJaUsada);
+
+            //assert
+            Compromisso compromissoAtualizado = controladorCompromisso.SelecionarPorId(compromissoParaEditar.Id);
+            compromissoAtualizado.Should().Be(compromissoParaEditar);
         }
         [TestMethod]
         public void DeveExcluir_Compromisso()
@@ -99,7 +124,7 @@ namespace eAgenda.Tests.CompromissoModule
             contatoEncontrado.Should().BeNull();
         }
         [TestMethod]
-        public void DeveSelecionar_Compromisso_PorId()
+        public void DeveSelecionar_CompromissoPorId()
         {
             //arrange
             DateTime dataCompromisso;
@@ -115,6 +140,48 @@ namespace eAgenda.Tests.CompromissoModule
 
             //assert
             compromissoEncontrado.Should().NotBeNull();
+        }
+        [TestMethod]
+        public void DeveSelecionar_CompromissoDataFutura()
+        {
+            //arrange
+            DateTime dataCompromisso;
+            TimeSpan dataInicio, dataTermino;
+            Contato novoContato;
+            Input(out dataCompromisso, out dataInicio, out dataTermino, out novoContato);
+
+            var compromissoPassado = new Compromisso("Assunto Passado", "Midi", "Presencial", DateTime.Now.AddDays(-1), dataInicio, dataTermino, null);
+            controladorCompromisso.InserirNovo(compromissoPassado);
+
+            var compromissoFuturo = new Compromisso("Assunto Futuro", "Ndd", "Presencial", DateTime.Now.AddDays(1), dataInicio, dataTermino, null);
+            controladorCompromisso.InserirNovo(compromissoFuturo);
+
+            //action
+            List<Compromisso> compromissosFuturos = controladorCompromisso.SelecionarCompromissosFuturos(DateTime.Now, DateTime.Now.AddDays(5));
+
+            //assert
+            compromissosFuturos.Should().HaveCount(1);
+        }
+        [TestMethod]
+        public void DeveSelecionar_CompromissoDataPassada()
+        {
+            //arrange
+            DateTime dataCompromisso;
+            TimeSpan dataInicio, dataTermino;
+            Contato novoContato;
+            Input(out dataCompromisso, out dataInicio, out dataTermino, out novoContato);
+
+            var compromissoPassado = new Compromisso("Assunto Passado", "Midi", "Presencial", DateTime.Now.AddDays(-1), dataInicio, dataTermino, null);
+            controladorCompromisso.InserirNovo(compromissoPassado);
+
+            var compromissoFuturo = new Compromisso("Assunto Futuro", "Ndd", "Presencial", DateTime.Now.AddDays(1), dataInicio, dataTermino, null);
+            controladorCompromisso.InserirNovo(compromissoFuturo);
+
+            //action
+            List<Compromisso> compromissosPassados = controladorCompromisso.SelecionarCompromissosPassados(DateTime.Now);
+
+            //assert
+            compromissosPassados.Should().HaveCount(1);
         }
         [TestMethod]
         public void DeveSelecionar_TodosCompromissos()
@@ -143,15 +210,15 @@ namespace eAgenda.Tests.CompromissoModule
             compromissos[2].Assunto.Should().Be("Compromisso 3");
         }
         [TestMethod]
-        public void DeveNegarInsercaoDeCompromissoNaMesmaData()
+        public void NaoDeveInserir_CompromissoComDataRepetida()
         {
             //arrange
-            Compromisso compromisso = new Compromisso("Testar", "Casa", "", new DateTime(2001, 07, 03), new TimeSpan(13, 00, 00), new TimeSpan(14, 00, 00), null);
-            controladorCompromisso.InserirNovo(compromisso);
+            Compromisso compromisso1 = new Compromisso("Assunto1", "Midi", "", new DateTime(2021, 11, 04), new TimeSpan(14, 00, 00), new TimeSpan(15, 00, 00), null);
+            controladorCompromisso.InserirNovo(compromisso1);
 
-            Compromisso compromissoInvalido = new Compromisso("Testar", "Casa", "", new DateTime(2001, 07, 03), new TimeSpan(13, 00, 00), new TimeSpan(14, 00, 00), null);
-            //act
-            string resultado = controladorCompromisso.InserirNovo(compromissoInvalido);
+            //action
+            Compromisso compromissoMesmaData = new Compromisso("Assunto2", "", "meet.com/", new DateTime(2021, 11, 04), new TimeSpan(14, 00, 00), new TimeSpan(15, 00, 00), null);           
+            string resultado = controladorCompromisso.InserirNovo(compromissoMesmaData);
 
             //assert
             resultado.Should().Be("Já há compromisso marcado nessa data e horário");
