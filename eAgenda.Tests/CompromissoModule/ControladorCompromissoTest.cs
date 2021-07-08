@@ -128,10 +128,10 @@ namespace eAgenda.Tests.CompromissoModule
             var compromisso = new Compromisso("Compromisso 1", "Local", "Presencial", dataCompromisso, dataInicio, dataTermino, null);
             controladorCompromisso.InserirNovo(compromisso);
 
-            var compromisso1 = new Compromisso("Compromisso 2", "Remoto", "Link", dataCompromisso, dataInicio, dataTermino, null);
+            var compromisso1 = new Compromisso("Compromisso 2", "Remoto", "Link", dataCompromisso.AddDays(1), dataInicio, dataTermino, null);
             controladorCompromisso.InserirNovo(compromisso1);
 
-            var compromisso2 = new Compromisso("Compromisso 3", "Local", "Presencial", dataCompromisso, dataInicio, dataTermino, null);
+            var compromisso2 = new Compromisso("Compromisso 3", "Local", "Presencial", dataCompromisso.AddDays(2), dataInicio, dataTermino, null);
             controladorCompromisso.InserirNovo(compromisso2);
             //action
             var compromissos = controladorCompromisso.SelecionarTodos();
@@ -142,7 +142,21 @@ namespace eAgenda.Tests.CompromissoModule
             compromissos[1].Assunto.Should().Be("Compromisso 2");
             compromissos[2].Assunto.Should().Be("Compromisso 3");
         }
+        [TestMethod]
+        public void DeveNegarInsercaoDeCompromissoNaMesmaData()
+        {
+            //arrange
+            Compromisso compromisso = new Compromisso("Testar", "Casa", "", new DateTime(2001, 07, 03), new TimeSpan(13, 00, 00), new TimeSpan(14, 00, 00), null);
+            controladorCompromisso.InserirNovo(compromisso);
 
+            Compromisso compromissoInvalido = new Compromisso("Testar", "Casa", "", new DateTime(2001, 07, 03), new TimeSpan(13, 00, 00), new TimeSpan(14, 00, 00), null);
+            //act
+            string resultado = controladorCompromisso.InserirNovo(compromissoInvalido);
+
+            //assert
+            resultado.Should().Be("Já há compromisso marcado nessa data e horário");
+            controladorCompromisso.SelecionarTodos().Should().HaveCount(1);
+        }
         private void Input(out DateTime dataCompromisso, out TimeSpan dataInicio, out TimeSpan dataTermino, out Contato novoContato)
         {
             dataCompromisso = new DateTime(2021, 12, 12);
