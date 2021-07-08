@@ -232,7 +232,7 @@ namespace eAgenda.Controladores.CompromissoModule
             var cargo = Convert.ToString(reader["CARGO"]);
 
             Contato contato = null;
-            if (reader["ID_CONTATO"] != DBNull.Value)
+            if (reader["ID_CONTATO"] != DBNull.Value && Convert.ToInt32(reader["ID_CONTATO"]) != 0)
             {
                 contato = new Contato(nome, email, telefone, empresa, cargo);
                 contato.Id = Convert.ToInt32(reader["ID_CONTATO"]);
@@ -255,7 +255,10 @@ namespace eAgenda.Controladores.CompromissoModule
             parametros.Add("DATA", compromisso.Data);
             parametros.Add("HORAINICIO", compromisso.HoraInicio.Ticks);
             parametros.Add("HORATERMINO", compromisso.HoraTermino.Ticks);
-            parametros.Add("ID_CONTATO", Convert.ToInt32(compromisso.Contato?.Id));
+            if (compromisso.Contato?.Id == 0)
+                parametros.Add("ID_CONTATO", null);
+            else
+                parametros.Add("ID_CONTATO", Convert.ToInt32(compromisso.Contato?.Id));
 
             return parametros;
         }
