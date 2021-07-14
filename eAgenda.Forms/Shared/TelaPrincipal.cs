@@ -21,11 +21,13 @@ namespace eAgenda.Forms.Shared
         }
         private void btnVisualizarTarefa_Click(object sender, EventArgs e)
         {
-
+            TelaVisualizarTarefa tela = new TelaVisualizarTarefa();
+            tela.Visible = true;
         }
         private void btnEditarTarefa_Click(object sender, EventArgs e)
         {
-
+            TelaEditarTarefa tela = new TelaEditarTarefa();
+            tela.Visible = true;
         }
         private void btnExcluirTarefa_Click(object sender, EventArgs e)
         {

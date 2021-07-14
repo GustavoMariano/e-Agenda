@@ -81,5 +81,10 @@ namespace eAgenda.Dominio.TarefaModule
         {
             return Prioridade.Chave != 0 && Prioridade.Chave != 1 && Prioridade.Chave != 2;
         }
+
+        public override string ToString()
+        {
+            return base.ToString();
+        }
     }
 }

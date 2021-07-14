@@ -273,6 +273,7 @@ namespace eAgenda.Forms.CompromissoModule
             this.ClientSize = new System.Drawing.Size(709, 340);
             this.Controls.Add(this.gBoxAdicionarCompromisso);
             this.Controls.Add(this.lblAdicionarTarefa);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.MaximizeBox = false;
             this.Name = "TelaAdicionarCompromisso";
             this.Text = "eAgenda - Adicionar Compromisso";

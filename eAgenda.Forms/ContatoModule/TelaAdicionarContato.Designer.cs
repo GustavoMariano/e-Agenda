@@ -31,20 +31,20 @@ namespace eAgenda.Forms.ContatoModule
         {
             this.lblAdicionarContato = new System.Windows.Forms.Label();
             this.gBoxAdicionarContato = new System.Windows.Forms.GroupBox();
+            this.tBoxCargo = new System.Windows.Forms.TextBox();
+            this.lblCargo = new System.Windows.Forms.Label();
+            this.tBoxEmpresa = new System.Windows.Forms.TextBox();
+            this.lblEmpresa = new System.Windows.Forms.Label();
+            this.lblCamposObrigatorios = new System.Windows.Forms.Label();
+            this.mskTBoxTelefone = new System.Windows.Forms.MaskedTextBox();
+            this.lblTelefone = new System.Windows.Forms.Label();
+            this.tBoxEmail = new System.Windows.Forms.TextBox();
+            this.lblEmail = new System.Windows.Forms.Label();
             this.btnLimpar = new System.Windows.Forms.Button();
             this.btnCancelar = new System.Windows.Forms.Button();
             this.btnAdicionar = new System.Windows.Forms.Button();
             this.tBoxNome = new System.Windows.Forms.TextBox();
             this.lblNome = new System.Windows.Forms.Label();
-            this.tBoxEmail = new System.Windows.Forms.TextBox();
-            this.lblEmail = new System.Windows.Forms.Label();
-            this.lblTelefone = new System.Windows.Forms.Label();
-            this.mskTBoxTelefone = new System.Windows.Forms.MaskedTextBox();
-            this.lblCamposObrigatorios = new System.Windows.Forms.Label();
-            this.tBoxEmpresa = new System.Windows.Forms.TextBox();
-            this.lblEmpresa = new System.Windows.Forms.Label();
-            this.tBoxCargo = new System.Windows.Forms.TextBox();
-            this.lblCargo = new System.Windows.Forms.Label();
             this.gBoxAdicionarContato.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -81,6 +81,80 @@ namespace eAgenda.Forms.ContatoModule
             this.gBoxAdicionarContato.TabIndex = 4;
             this.gBoxAdicionarContato.TabStop = false;
             this.gBoxAdicionarContato.Text = "Adicionar";
+            // 
+            // tBoxCargo
+            // 
+            this.tBoxCargo.Location = new System.Drawing.Point(357, 129);
+            this.tBoxCargo.Name = "tBoxCargo";
+            this.tBoxCargo.Size = new System.Drawing.Size(322, 20);
+            this.tBoxCargo.TabIndex = 15;
+            // 
+            // lblCargo
+            // 
+            this.lblCargo.AutoSize = true;
+            this.lblCargo.Location = new System.Drawing.Point(357, 113);
+            this.lblCargo.Name = "lblCargo";
+            this.lblCargo.Size = new System.Drawing.Size(35, 13);
+            this.lblCargo.TabIndex = 14;
+            this.lblCargo.Text = "Cargo";
+            // 
+            // tBoxEmpresa
+            // 
+            this.tBoxEmpresa.Location = new System.Drawing.Point(9, 129);
+            this.tBoxEmpresa.Name = "tBoxEmpresa";
+            this.tBoxEmpresa.Size = new System.Drawing.Size(322, 20);
+            this.tBoxEmpresa.TabIndex = 13;
+            // 
+            // lblEmpresa
+            // 
+            this.lblEmpresa.AutoSize = true;
+            this.lblEmpresa.Location = new System.Drawing.Point(9, 113);
+            this.lblEmpresa.Name = "lblEmpresa";
+            this.lblEmpresa.Size = new System.Drawing.Size(48, 13);
+            this.lblEmpresa.TabIndex = 12;
+            this.lblEmpresa.Text = "Empresa";
+            // 
+            // lblCamposObrigatorios
+            // 
+            this.lblCamposObrigatorios.AutoSize = true;
+            this.lblCamposObrigatorios.Location = new System.Drawing.Point(6, 177);
+            this.lblCamposObrigatorios.Name = "lblCamposObrigatorios";
+            this.lblCamposObrigatorios.Size = new System.Drawing.Size(129, 13);
+            this.lblCamposObrigatorios.TabIndex = 11;
+            this.lblCamposObrigatorios.Text = "Campos * são obrigatórios";
+            // 
+            // mskTBoxTelefone
+            // 
+            this.mskTBoxTelefone.Location = new System.Drawing.Point(564, 86);
+            this.mskTBoxTelefone.Mask = "(99) 99999-9999";
+            this.mskTBoxTelefone.Name = "mskTBoxTelefone";
+            this.mskTBoxTelefone.Size = new System.Drawing.Size(115, 20);
+            this.mskTBoxTelefone.TabIndex = 10;
+            // 
+            // lblTelefone
+            // 
+            this.lblTelefone.AutoSize = true;
+            this.lblTelefone.Location = new System.Drawing.Point(564, 70);
+            this.lblTelefone.Name = "lblTelefone";
+            this.lblTelefone.Size = new System.Drawing.Size(53, 13);
+            this.lblTelefone.TabIndex = 9;
+            this.lblTelefone.Text = "Telefone*";
+            // 
+            // tBoxEmail
+            // 
+            this.tBoxEmail.Location = new System.Drawing.Point(9, 86);
+            this.tBoxEmail.Name = "tBoxEmail";
+            this.tBoxEmail.Size = new System.Drawing.Size(532, 20);
+            this.tBoxEmail.TabIndex = 8;
+            // 
+            // lblEmail
+            // 
+            this.lblEmail.AutoSize = true;
+            this.lblEmail.Location = new System.Drawing.Point(9, 70);
+            this.lblEmail.Name = "lblEmail";
+            this.lblEmail.Size = new System.Drawing.Size(39, 13);
+            this.lblEmail.TabIndex = 7;
+            this.lblEmail.Text = "E-mail*";
             // 
             // btnLimpar
             // 
@@ -128,80 +202,6 @@ namespace eAgenda.Forms.ContatoModule
             this.lblNome.TabIndex = 0;
             this.lblNome.Text = "Nome";
             // 
-            // tBoxEmail
-            // 
-            this.tBoxEmail.Location = new System.Drawing.Point(9, 86);
-            this.tBoxEmail.Name = "tBoxEmail";
-            this.tBoxEmail.Size = new System.Drawing.Size(532, 20);
-            this.tBoxEmail.TabIndex = 8;
-            // 
-            // lblEmail
-            // 
-            this.lblEmail.AutoSize = true;
-            this.lblEmail.Location = new System.Drawing.Point(9, 70);
-            this.lblEmail.Name = "lblEmail";
-            this.lblEmail.Size = new System.Drawing.Size(39, 13);
-            this.lblEmail.TabIndex = 7;
-            this.lblEmail.Text = "E-mail*";
-            // 
-            // lblTelefone
-            // 
-            this.lblTelefone.AutoSize = true;
-            this.lblTelefone.Location = new System.Drawing.Point(564, 70);
-            this.lblTelefone.Name = "lblTelefone";
-            this.lblTelefone.Size = new System.Drawing.Size(53, 13);
-            this.lblTelefone.TabIndex = 9;
-            this.lblTelefone.Text = "Telefone*";
-            // 
-            // mskTBoxTelefone
-            // 
-            this.mskTBoxTelefone.Location = new System.Drawing.Point(564, 86);
-            this.mskTBoxTelefone.Mask = "(99) 99999-9999";
-            this.mskTBoxTelefone.Name = "mskTBoxTelefone";
-            this.mskTBoxTelefone.Size = new System.Drawing.Size(115, 20);
-            this.mskTBoxTelefone.TabIndex = 10;
-            // 
-            // lblCamposObrigatorios
-            // 
-            this.lblCamposObrigatorios.AutoSize = true;
-            this.lblCamposObrigatorios.Location = new System.Drawing.Point(6, 177);
-            this.lblCamposObrigatorios.Name = "lblCamposObrigatorios";
-            this.lblCamposObrigatorios.Size = new System.Drawing.Size(129, 13);
-            this.lblCamposObrigatorios.TabIndex = 11;
-            this.lblCamposObrigatorios.Text = "Campos * são obrigatórios";
-            // 
-            // tBoxEmpresa
-            // 
-            this.tBoxEmpresa.Location = new System.Drawing.Point(9, 129);
-            this.tBoxEmpresa.Name = "tBoxEmpresa";
-            this.tBoxEmpresa.Size = new System.Drawing.Size(322, 20);
-            this.tBoxEmpresa.TabIndex = 13;
-            // 
-            // lblEmpresa
-            // 
-            this.lblEmpresa.AutoSize = true;
-            this.lblEmpresa.Location = new System.Drawing.Point(9, 113);
-            this.lblEmpresa.Name = "lblEmpresa";
-            this.lblEmpresa.Size = new System.Drawing.Size(48, 13);
-            this.lblEmpresa.TabIndex = 12;
-            this.lblEmpresa.Text = "Empresa";
-            // 
-            // tBoxCargo
-            // 
-            this.tBoxCargo.Location = new System.Drawing.Point(357, 129);
-            this.tBoxCargo.Name = "tBoxCargo";
-            this.tBoxCargo.Size = new System.Drawing.Size(322, 20);
-            this.tBoxCargo.TabIndex = 15;
-            // 
-            // lblCargo
-            // 
-            this.lblCargo.AutoSize = true;
-            this.lblCargo.Location = new System.Drawing.Point(357, 113);
-            this.lblCargo.Name = "lblCargo";
-            this.lblCargo.Size = new System.Drawing.Size(35, 13);
-            this.lblCargo.TabIndex = 14;
-            this.lblCargo.Text = "Cargo";
-            // 
             // TelaAdicionarContato
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -209,6 +209,7 @@ namespace eAgenda.Forms.ContatoModule
             this.ClientSize = new System.Drawing.Size(709, 283);
             this.Controls.Add(this.gBoxAdicionarContato);
             this.Controls.Add(this.lblAdicionarContato);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.MaximizeBox = false;
             this.Name = "TelaAdicionarContato";
             this.Text = "eAgenda - Adicionar Contato";

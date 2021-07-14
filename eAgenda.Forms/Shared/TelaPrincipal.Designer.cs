@@ -228,6 +228,7 @@ namespace eAgenda.Forms.Shared
             this.Controls.Add(this.gBoxContato);
             this.Controls.Add(this.lblEAgenda);
             this.Controls.Add(this.gBoxTarefa);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.MaximizeBox = false;
             this.Name = "TelaPrincipal";
             this.Text = "eAgenda - Academia do Programador 2021";

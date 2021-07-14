@@ -31,6 +31,7 @@ namespace eAgenda.Forms.TarefaModule
         {
             this.lblAdicionarTarefa = new System.Windows.Forms.Label();
             this.gBoxAdicionarTarefa = new System.Windows.Forms.GroupBox();
+            this.lblCamposObrigatorios = new System.Windows.Forms.Label();
             this.btnLimpar = new System.Windows.Forms.Button();
             this.btnCancelar = new System.Windows.Forms.Button();
             this.btnAdicionar = new System.Windows.Forms.Button();
@@ -38,7 +39,6 @@ namespace eAgenda.Forms.TarefaModule
             this.label1 = new System.Windows.Forms.Label();
             this.tBoxTitulo = new System.Windows.Forms.TextBox();
             this.lblTitulo = new System.Windows.Forms.Label();
-            this.lblCamposObrigatorios = new System.Windows.Forms.Label();
             this.gBoxAdicionarTarefa.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -69,6 +69,15 @@ namespace eAgenda.Forms.TarefaModule
             this.gBoxAdicionarTarefa.TabIndex = 3;
             this.gBoxAdicionarTarefa.TabStop = false;
             this.gBoxAdicionarTarefa.Text = "Adicionar";
+            // 
+            // lblCamposObrigatorios
+            // 
+            this.lblCamposObrigatorios.AutoSize = true;
+            this.lblCamposObrigatorios.Location = new System.Drawing.Point(6, 177);
+            this.lblCamposObrigatorios.Name = "lblCamposObrigatorios";
+            this.lblCamposObrigatorios.Size = new System.Drawing.Size(129, 13);
+            this.lblCamposObrigatorios.TabIndex = 12;
+            this.lblCamposObrigatorios.Text = "Campos * são obrigatórios";
             // 
             // btnLimpar
             // 
@@ -137,15 +146,6 @@ namespace eAgenda.Forms.TarefaModule
             this.lblTitulo.TabIndex = 0;
             this.lblTitulo.Text = "Título*";
             // 
-            // lblCamposObrigatorios
-            // 
-            this.lblCamposObrigatorios.AutoSize = true;
-            this.lblCamposObrigatorios.Location = new System.Drawing.Point(6, 177);
-            this.lblCamposObrigatorios.Name = "lblCamposObrigatorios";
-            this.lblCamposObrigatorios.Size = new System.Drawing.Size(129, 13);
-            this.lblCamposObrigatorios.TabIndex = 12;
-            this.lblCamposObrigatorios.Text = "Campos * são obrigatórios";
-            // 
             // TelaAdicionarTarefa
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -153,6 +153,7 @@ namespace eAgenda.Forms.TarefaModule
             this.ClientSize = new System.Drawing.Size(709, 283);
             this.Controls.Add(this.gBoxAdicionarTarefa);
             this.Controls.Add(this.lblAdicionarTarefa);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.MaximizeBox = false;
             this.Name = "TelaAdicionarTarefa";
             this.Text = "eAgenda - Adicionar Tarefa";
