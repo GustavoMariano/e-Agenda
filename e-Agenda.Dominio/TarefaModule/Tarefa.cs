@@ -12,8 +12,6 @@ namespace eAgenda.Dominio.TarefaModule
             DataCriacao = dataCriacao.Date;
             Prioridade = new Prioridade(prioridade);            
         }
-
-
         public string Titulo { get; }
 
         public Prioridade Prioridade { get; }
@@ -29,9 +27,7 @@ namespace eAgenda.Dominio.TarefaModule
             Percentual = percentual;
 
             if (Percentual == 100)
-            {
                 DataConclusao = dataConclusao;
-            }
         }
 
         public override bool Equals(object obj)
@@ -66,19 +62,24 @@ namespace eAgenda.Dominio.TarefaModule
         {
             string resultadoValidacao = "";
 
-            if (string.IsNullOrEmpty(Titulo))            
+            if (string.IsNullOrEmpty(Titulo))
                 resultadoValidacao = "O campo Título é obrigatório";
 
-            if (DataCriacao == DateTime.MinValue)           
+            if (PrioridadeInvalida())
+                resultadoValidacao += QuebraDeLinha(resultadoValidacao) + "O campo Prioridade é obrigatório";
+
+            if (DataCriacao == DateTime.MinValue)
                 resultadoValidacao += QuebraDeLinha(resultadoValidacao) + "O campo Data de Criação é obrigatório";
-            
+
             if (resultadoValidacao == "")
                 resultadoValidacao = "ESTA_VALIDO";
 
             return resultadoValidacao;
         }
 
-
-
+        private bool PrioridadeInvalida()
+        {
+            return Prioridade.Chave != 0 && Prioridade.Chave != 1 && Prioridade.Chave != 2;
+        }
     }
 }

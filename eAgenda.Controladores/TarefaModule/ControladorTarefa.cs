@@ -108,15 +108,12 @@ namespace eAgenda.Controladores.TarefaModule
 
         #endregion
 
-
         public override string InserirNovo(Tarefa registro)
         {
             string resultadoValidacao = registro.Validar();
 
             if (resultadoValidacao == "ESTA_VALIDO")
-            {
                 registro.Id = Db.Insert(sqlInserirTarefa, ObtemParametrosTarefa(registro));
-            }
 
             return resultadoValidacao;
         }
@@ -221,7 +218,5 @@ namespace eAgenda.Controladores.TarefaModule
 
             return parametros;
         }
-
-
     }
 }

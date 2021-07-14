@@ -78,7 +78,5 @@ namespace eAgenda.ConsoleApp.Shared
 
             Console.WriteLine();
         }
-
-
     }
 }

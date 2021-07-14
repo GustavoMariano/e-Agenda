@@ -48,9 +48,7 @@ namespace eAgenda.ConsoleApp.TarefaModule
                 ApresentarMensagem(MensagemDeEdicaoComSucesso(), TipoMensagem.Sucesso);
             }
             else if (opcao == "2")
-            {
                 base.EditarRegistro();
-            }
         }
 
         public override bool VisualizarRegistros(TipoVisualizacao tipo)
