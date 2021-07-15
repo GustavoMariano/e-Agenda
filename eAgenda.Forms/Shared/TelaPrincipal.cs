@@ -31,7 +31,8 @@ namespace eAgenda.Forms.Shared
         }
         private void btnExcluirTarefa_Click(object sender, EventArgs e)
         {
-
+            TelaExcluirTarefa tela = new TelaExcluirTarefa();
+            tela.ShowDialog();
         }
         #endregion
 
@@ -43,15 +44,18 @@ namespace eAgenda.Forms.Shared
         }
         private void btnVisualizarContato_Click(object sender, EventArgs e)
         {
-
+            TelaSelecionarVisulizacaoContato tela = new TelaSelecionarVisulizacaoContato();
+            tela.ShowDialog();
         }
         private void btnEditarContato_Click(object sender, EventArgs e)
         {
-
+            TelaSelecionarVisulizacaoContato tela = new TelaSelecionarVisulizacaoContato(true);
+            tela.ShowDialog();
         }
         private void btnExcluirContato_Click(object sender, EventArgs e)
         {
-
+            TelaExcluirContato tela = new TelaExcluirContato();
+            tela.ShowDialog();
         }
         #endregion
 

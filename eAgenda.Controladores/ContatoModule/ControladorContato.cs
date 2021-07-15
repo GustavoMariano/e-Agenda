@@ -133,7 +133,6 @@ namespace eAgenda.Controladores.ContatoModule
         public List<GrupoContato> SelecionarContatosAgrupados(Func<Contato, string> campo)
         {
             var contatos = Db.GetAll(sqlSelecionarTodosContatos, ConverterEmContato);
-
             return new AgrupadorContato().Agrupar(contatos, campo);
         }
 
@@ -166,8 +165,5 @@ namespace eAgenda.Controladores.ContatoModule
 
             return contato;
         }
-
-
-
     }
 }

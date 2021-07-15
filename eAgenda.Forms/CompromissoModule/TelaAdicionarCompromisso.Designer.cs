@@ -31,9 +31,6 @@ namespace eAgenda.Forms.CompromissoModule
         {
             this.lblAdicionarTarefa = new System.Windows.Forms.Label();
             this.gBoxAdicionarCompromisso = new System.Windows.Forms.GroupBox();
-            this.lblIdContato = new System.Windows.Forms.Label();
-            this.numUpDownIdContato = new System.Windows.Forms.NumericUpDown();
-            this.btnVisualizarContatos = new System.Windows.Forms.Button();
             this.rBtnRemoto = new System.Windows.Forms.RadioButton();
             this.rBtnPresencial = new System.Windows.Forms.RadioButton();
             this.dateTPHoraConclusao = new System.Windows.Forms.DateTimePicker();
@@ -50,8 +47,13 @@ namespace eAgenda.Forms.CompromissoModule
             this.btnAdicionar = new System.Windows.Forms.Button();
             this.tBoxAssunto = new System.Windows.Forms.TextBox();
             this.lblAssunto = new System.Windows.Forms.Label();
+            this.gBoxAdicionarContato = new System.Windows.Forms.GroupBox();
+            this.rBtnPossuiContato = new System.Windows.Forms.RadioButton();
+            this.rBtnNaoPossuiContato = new System.Windows.Forms.RadioButton();
+            this.lBoxContatos = new System.Windows.Forms.ListBox();
+            this.lblAdicionarContato = new System.Windows.Forms.Label();
             this.gBoxAdicionarCompromisso.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.numUpDownIdContato)).BeginInit();
+            this.gBoxAdicionarContato.SuspendLayout();
             this.SuspendLayout();
             // 
             // lblAdicionarTarefa
@@ -67,9 +69,7 @@ namespace eAgenda.Forms.CompromissoModule
             // 
             // gBoxAdicionarCompromisso
             // 
-            this.gBoxAdicionarCompromisso.Controls.Add(this.lblIdContato);
-            this.gBoxAdicionarCompromisso.Controls.Add(this.numUpDownIdContato);
-            this.gBoxAdicionarCompromisso.Controls.Add(this.btnVisualizarContatos);
+            this.gBoxAdicionarCompromisso.Controls.Add(this.gBoxAdicionarContato);
             this.gBoxAdicionarCompromisso.Controls.Add(this.rBtnRemoto);
             this.gBoxAdicionarCompromisso.Controls.Add(this.rBtnPresencial);
             this.gBoxAdicionarCompromisso.Controls.Add(this.dateTPHoraConclusao);
@@ -88,37 +88,10 @@ namespace eAgenda.Forms.CompromissoModule
             this.gBoxAdicionarCompromisso.Controls.Add(this.lblAssunto);
             this.gBoxAdicionarCompromisso.Location = new System.Drawing.Point(12, 75);
             this.gBoxAdicionarCompromisso.Name = "gBoxAdicionarCompromisso";
-            this.gBoxAdicionarCompromisso.Size = new System.Drawing.Size(685, 253);
+            this.gBoxAdicionarCompromisso.Size = new System.Drawing.Size(685, 367);
             this.gBoxAdicionarCompromisso.TabIndex = 5;
             this.gBoxAdicionarCompromisso.TabStop = false;
             this.gBoxAdicionarCompromisso.Text = "Adicionar";
-            // 
-            // lblIdContato
-            // 
-            this.lblIdContato.AutoSize = true;
-            this.lblIdContato.Location = new System.Drawing.Point(9, 170);
-            this.lblIdContato.Name = "lblIdContato";
-            this.lblIdContato.Size = new System.Drawing.Size(72, 13);
-            this.lblIdContato.TabIndex = 25;
-            this.lblIdContato.Text = "ID do contato";
-            // 
-            // numUpDownIdContato
-            // 
-            this.numUpDownIdContato.Enabled = false;
-            this.numUpDownIdContato.Location = new System.Drawing.Point(9, 186);
-            this.numUpDownIdContato.Name = "numUpDownIdContato";
-            this.numUpDownIdContato.ReadOnly = true;
-            this.numUpDownIdContato.Size = new System.Drawing.Size(92, 20);
-            this.numUpDownIdContato.TabIndex = 24;
-            // 
-            // btnVisualizarContatos
-            // 
-            this.btnVisualizarContatos.Location = new System.Drawing.Point(116, 184);
-            this.btnVisualizarContatos.Name = "btnVisualizarContatos";
-            this.btnVisualizarContatos.Size = new System.Drawing.Size(121, 23);
-            this.btnVisualizarContatos.TabIndex = 23;
-            this.btnVisualizarContatos.Text = "Visualizar Contatos";
-            this.btnVisualizarContatos.UseVisualStyleBackColor = true;
             // 
             // rBtnRemoto
             // 
@@ -198,7 +171,7 @@ namespace eAgenda.Forms.CompromissoModule
             // lblCamposObrigatorios
             // 
             this.lblCamposObrigatorios.AutoSize = true;
-            this.lblCamposObrigatorios.Location = new System.Drawing.Point(6, 234);
+            this.lblCamposObrigatorios.Location = new System.Drawing.Point(6, 344);
             this.lblCamposObrigatorios.Name = "lblCamposObrigatorios";
             this.lblCamposObrigatorios.Size = new System.Drawing.Size(129, 13);
             this.lblCamposObrigatorios.TabIndex = 11;
@@ -222,7 +195,7 @@ namespace eAgenda.Forms.CompromissoModule
             // 
             // btnLimpar
             // 
-            this.btnLimpar.Location = new System.Drawing.Point(523, 224);
+            this.btnLimpar.Location = new System.Drawing.Point(523, 334);
             this.btnLimpar.Name = "btnLimpar";
             this.btnLimpar.Size = new System.Drawing.Size(75, 23);
             this.btnLimpar.TabIndex = 6;
@@ -232,7 +205,7 @@ namespace eAgenda.Forms.CompromissoModule
             // 
             // btnCancelar
             // 
-            this.btnCancelar.Location = new System.Drawing.Point(442, 224);
+            this.btnCancelar.Location = new System.Drawing.Point(442, 334);
             this.btnCancelar.Name = "btnCancelar";
             this.btnCancelar.Size = new System.Drawing.Size(75, 23);
             this.btnCancelar.TabIndex = 5;
@@ -242,7 +215,7 @@ namespace eAgenda.Forms.CompromissoModule
             // 
             // btnAdicionar
             // 
-            this.btnAdicionar.Location = new System.Drawing.Point(604, 224);
+            this.btnAdicionar.Location = new System.Drawing.Point(604, 334);
             this.btnAdicionar.Name = "btnAdicionar";
             this.btnAdicionar.Size = new System.Drawing.Size(75, 23);
             this.btnAdicionar.TabIndex = 4;
@@ -266,11 +239,68 @@ namespace eAgenda.Forms.CompromissoModule
             this.lblAssunto.TabIndex = 0;
             this.lblAssunto.Text = "Assunto*";
             // 
+            // gBoxAdicionarContato
+            // 
+            this.gBoxAdicionarContato.Controls.Add(this.lblAdicionarContato);
+            this.gBoxAdicionarContato.Controls.Add(this.lBoxContatos);
+            this.gBoxAdicionarContato.Controls.Add(this.rBtnNaoPossuiContato);
+            this.gBoxAdicionarContato.Controls.Add(this.rBtnPossuiContato);
+            this.gBoxAdicionarContato.Location = new System.Drawing.Point(6, 170);
+            this.gBoxAdicionarContato.Name = "gBoxAdicionarContato";
+            this.gBoxAdicionarContato.Size = new System.Drawing.Size(673, 158);
+            this.gBoxAdicionarContato.TabIndex = 26;
+            this.gBoxAdicionarContato.TabStop = false;
+            this.gBoxAdicionarContato.Text = "Adicionar Contato";
+            // 
+            // rBtnPossuiContato
+            // 
+            this.rBtnPossuiContato.AutoSize = true;
+            this.rBtnPossuiContato.Location = new System.Drawing.Point(118, 91);
+            this.rBtnPossuiContato.Name = "rBtnPossuiContato";
+            this.rBtnPossuiContato.Size = new System.Drawing.Size(42, 17);
+            this.rBtnPossuiContato.TabIndex = 0;
+            this.rBtnPossuiContato.Text = "Sim";
+            this.rBtnPossuiContato.UseVisualStyleBackColor = true;
+            this.rBtnPossuiContato.CheckedChanged += new System.EventHandler(this.rBtnPossuiContato_CheckedChanged);
+            // 
+            // rBtnNaoPossuiContato
+            // 
+            this.rBtnNaoPossuiContato.AutoSize = true;
+            this.rBtnNaoPossuiContato.Checked = true;
+            this.rBtnNaoPossuiContato.Location = new System.Drawing.Point(50, 91);
+            this.rBtnNaoPossuiContato.Name = "rBtnNaoPossuiContato";
+            this.rBtnNaoPossuiContato.Size = new System.Drawing.Size(45, 17);
+            this.rBtnNaoPossuiContato.TabIndex = 1;
+            this.rBtnNaoPossuiContato.TabStop = true;
+            this.rBtnNaoPossuiContato.Text = "Não";
+            this.rBtnNaoPossuiContato.UseVisualStyleBackColor = true;
+            this.rBtnNaoPossuiContato.CheckedChanged += new System.EventHandler(this.rBtnNaoPossuiContato_CheckedChanged);
+            // 
+            // lBoxContatos
+            // 
+            this.lBoxContatos.Enabled = false;
+            this.lBoxContatos.FormattingEnabled = true;
+            this.lBoxContatos.Location = new System.Drawing.Point(216, 14);
+            this.lBoxContatos.Name = "lBoxContatos";
+            this.lBoxContatos.Size = new System.Drawing.Size(450, 134);
+            this.lBoxContatos.TabIndex = 2;
+            // 
+            // lblAdicionarContato
+            // 
+            this.lblAdicionarContato.AutoSize = true;
+            this.lblAdicionarContato.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblAdicionarContato.Location = new System.Drawing.Point(24, 45);
+            this.lblAdicionarContato.Name = "lblAdicionarContato";
+            this.lblAdicionarContato.Size = new System.Drawing.Size(162, 26);
+            this.lblAdicionarContato.TabIndex = 3;
+            this.lblAdicionarContato.Text = "Deseja vincular um contato\r\na esse compromisso?";
+            this.lblAdicionarContato.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
             // TelaAdicionarCompromisso
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(709, 340);
+            this.ClientSize = new System.Drawing.Size(709, 454);
             this.Controls.Add(this.gBoxAdicionarCompromisso);
             this.Controls.Add(this.lblAdicionarTarefa);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
@@ -279,7 +309,8 @@ namespace eAgenda.Forms.CompromissoModule
             this.Text = "eAgenda - Adicionar Compromisso";
             this.gBoxAdicionarCompromisso.ResumeLayout(false);
             this.gBoxAdicionarCompromisso.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.numUpDownIdContato)).EndInit();
+            this.gBoxAdicionarContato.ResumeLayout(false);
+            this.gBoxAdicionarContato.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -304,8 +335,10 @@ namespace eAgenda.Forms.CompromissoModule
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.RadioButton rBtnRemoto;
         private System.Windows.Forms.RadioButton rBtnPresencial;
-        private System.Windows.Forms.Label lblIdContato;
-        private System.Windows.Forms.NumericUpDown numUpDownIdContato;
-        private System.Windows.Forms.Button btnVisualizarContatos;
+        private System.Windows.Forms.GroupBox gBoxAdicionarContato;
+        private System.Windows.Forms.Label lblAdicionarContato;
+        private System.Windows.Forms.ListBox lBoxContatos;
+        private System.Windows.Forms.RadioButton rBtnNaoPossuiContato;
+        private System.Windows.Forms.RadioButton rBtnPossuiContato;
     }
 }

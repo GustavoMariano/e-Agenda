@@ -62,7 +62,6 @@ namespace eAgenda.Forms.TarefaModule
                     MessageBox.Show(resultadoEdicao);
             }
         }
-
         #region Métodos Privados
         private void AtualizarRegistros()
         {
@@ -81,6 +80,7 @@ namespace eAgenda.Forms.TarefaModule
         {
             if (editavel == true)
             {
+                Text = "eAgenda - Editar Tarefa";
                 btnAtualizar.Visible = false;
                 btnSelecionar.Visible = true;
                 Height = 751;

@@ -1,20 +1,28 @@
-﻿using eAgenda.Controladores.CompromissoModule;
+﻿using eAgenda.Controladores.ContatoModule;
 using eAgenda.Controladores.Shared;
 using eAgenda.Dominio.CompromissoModule;
 using eAgenda.Dominio.ContatoModule;
 using System;
+using System.Collections.Generic;
 using System.Windows.Forms;
 
 namespace eAgenda.Forms.CompromissoModule
 {
     public partial class TelaAdicionarCompromisso : Form
     {
-        Controlador<Compromisso> controlador = new ControladorCompromisso();
+        //Controlador<Compromisso> controlador = new ControladorCompromisso();
+        Controlador<Contato> controladorContato = new ControladorContato();
         Compromisso compromisso;
         Contato contato;
         public TelaAdicionarCompromisso()
         {
-            InitializeComponent();            
+            InitializeComponent();
+
+            List<Contato> todosContatos = controladorContato.SelecionarTodos();
+            foreach (var item in todosContatos)
+            {
+                lBoxContatos.Items.Add(item.ToString());
+            }
         }
 
         private void btnAdicionar_Click(object sender, EventArgs e)
@@ -33,7 +41,6 @@ namespace eAgenda.Forms.CompromissoModule
         {
             tBoxAssunto.Text = "";
             tBoxLinkLocalizacao.Text = "";
-            numUpDownIdContato.Value = 0;
             dataInicio.Value = DateTime.Now;
             dateTPHoraInicio.Value = DateTime.Now;
             dateTPHoraConclusao.Value = DateTime.Now;
@@ -44,7 +51,6 @@ namespace eAgenda.Forms.CompromissoModule
         {
             tBoxAssunto.Text = "";
             tBoxLinkLocalizacao.Text = "";
-            numUpDownIdContato.Value = 0;
             dataInicio.Value = DateTime.Now;
             dateTPHoraInicio.Value = DateTime.Now;
             dateTPHoraConclusao.Value = DateTime.Now;
@@ -56,6 +62,16 @@ namespace eAgenda.Forms.CompromissoModule
                 lblLinkLocalizacao.Text = "Localização*";
             else
                 lblLinkLocalizacao.Text = "Link*";
+        }
+
+        private void rBtnPossuiContato_CheckedChanged(object sender, EventArgs e)
+        {
+            lBoxContatos.Enabled = true;
+        }
+
+        private void rBtnNaoPossuiContato_CheckedChanged(object sender, EventArgs e)
+        {
+            lBoxContatos.Enabled = false;
         }
     }
 }

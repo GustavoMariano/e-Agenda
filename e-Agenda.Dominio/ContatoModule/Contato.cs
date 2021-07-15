@@ -66,5 +66,10 @@ namespace eAgenda.Dominio.ContatoModule
             hashCode = hashCode * -1521134295 + EqualityComparer<string>.Default.GetHashCode(Empresa);
             return hashCode;
         }
+
+        public override string ToString()
+        {
+            return Id + "   -   " + Nome + "   -   " + Email + "   -   " + Telefone + "   -   " + Cargo + "   -   " + Empresa;
+        }
     }
 }
