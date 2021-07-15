@@ -91,11 +91,11 @@
     <Compile Include="TarefaModule\TelaAdicionarTarefa.Designer.cs">
       <DependentUpon>TelaAdicionarTarefa.cs</DependentUpon>
     </Compile>
-    <Compile Include="TarefaModule\TelaVisualizarTarefa.cs">
+    <Compile Include="TarefaModule\TelaVisualizarEditarTarefa.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="TarefaModule\TelaVisualizarTarefa.Designer.cs">
-      <DependentUpon>TelaVisualizarTarefa.cs</DependentUpon>
+    <Compile Include="TarefaModule\TelaVisualizarEditarTarefa.Designer.cs">
+      <DependentUpon>TelaVisualizarEditarTarefa.cs</DependentUpon>
     </Compile>
     <EmbeddedResource Include="CompromissoModule\TelaAdicionarCompromisso.resx">
       <DependentUpon>TelaAdicionarCompromisso.cs</DependentUpon>
@@ -118,8 +118,8 @@
     <EmbeddedResource Include="TarefaModule\TelaAdicionarTarefa.resx">
       <DependentUpon>TelaAdicionarTarefa.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="TarefaModule\TelaVisualizarTarefa.resx">
-      <DependentUpon>TelaVisualizarTarefa.cs</DependentUpon>
+    <EmbeddedResource Include="TarefaModule\TelaVisualizarEditarTarefa.resx">
+      <DependentUpon>TelaVisualizarEditarTarefa.cs</DependentUpon>
     </EmbeddedResource>
     <None Include="packages.config" />
     <None Include="Properties\Settings.settings">

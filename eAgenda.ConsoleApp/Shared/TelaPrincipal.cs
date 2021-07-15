@@ -83,5 +83,4 @@ namespace eAgenda.ConsoleApp.Shared
                 return false;
         }
     }
-
 }

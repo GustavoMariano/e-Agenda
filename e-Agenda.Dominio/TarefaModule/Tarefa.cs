@@ -5,13 +5,23 @@ using System.Collections.Generic;
 namespace eAgenda.Dominio.TarefaModule
 {
     public class Tarefa : EntidadeBase, IEquatable<Tarefa>
-    {        
+    {
+
         public Tarefa(string titulo, DateTime dataCriacao, PrioridadeEnum prioridade)
         {            
             Titulo = titulo;
             DataCriacao = dataCriacao.Date;
             Prioridade = new Prioridade(prioridade);            
         }
+
+        public Tarefa(string titulo, DateTime dataCriacao, PrioridadeEnum prioridade, int percentual)
+        {
+            Prioridade = new Prioridade(prioridade);
+            DataCriacao = dataCriacao;
+            Titulo = titulo;
+            Percentual = percentual;
+        }
+
         public string Titulo { get; }
 
         public Prioridade Prioridade { get; }
@@ -84,7 +94,7 @@ namespace eAgenda.Dominio.TarefaModule
 
         public override string ToString()
         {
-            return base.ToString();
+            return Id + "   -   " + Titulo + "   -   " + Prioridade + "   -   " + DataCriacao + "   -   " + Percentual + "   -   " + DataConclusao;
         }
     }
 }

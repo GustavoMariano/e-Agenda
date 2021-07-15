@@ -34,8 +34,5 @@ namespace eAgenda.Dominio.TarefaModule
         {
             return prioridade.Description();
         }
-
-
-
     }
 }

@@ -32,7 +32,6 @@ namespace eAgenda.Controladores.TarefaModule
                 SET 
                     [PRIORIDADE] = @PRIORIDADE, 
                     [TITULO] = @TITULO, 
-                    [DATACRIACAO] = @DATACRIACAO, 
                     [DATACONCLUSAO] = @DATACONCLUSAO,
                     [PERCENTUAL] = @PERCENTUAL
 
