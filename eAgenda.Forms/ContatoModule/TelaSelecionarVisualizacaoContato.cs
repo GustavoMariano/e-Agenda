@@ -7,13 +7,13 @@ using System.Windows.Forms;
 
 namespace eAgenda.Forms.ContatoModule
 {
-    public partial class TelaSelecionarVisulizacaoContato : Form
+    public partial class TelaSelecionarVisualizacaoContato : Form
     {
         Controlador<Contato> controlador = new ControladorContato();
         ControladorContato controladorContato = new ControladorContato();
         TelaVisualizarEditarContato tela;
         bool editavel = false;
-        public TelaSelecionarVisulizacaoContato(bool editar = false)
+        public TelaSelecionarVisualizacaoContato(bool editar = false)
         {
             InitializeComponent();
             editavel = editar;

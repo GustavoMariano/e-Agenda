@@ -1,7 +1,7 @@
 ﻿
 namespace eAgenda.Forms.ContatoModule
 {
-    partial class TelaSelecionarVisulizacaoContato
+    partial class TelaSelecionarVisualizacaoContato
     {
         /// <summary>
         /// Required designer variable.

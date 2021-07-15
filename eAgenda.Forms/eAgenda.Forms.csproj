@@ -71,6 +71,24 @@
     <Compile Include="CompromissoModule\TelaAdicionarCompromisso.Designer.cs">
       <DependentUpon>TelaAdicionarCompromisso.cs</DependentUpon>
     </Compile>
+    <Compile Include="CompromissoModule\TelaExcluirCompromisso.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="CompromissoModule\TelaExcluirCompromisso.Designer.cs">
+      <DependentUpon>TelaExcluirCompromisso.cs</DependentUpon>
+    </Compile>
+    <Compile Include="CompromissoModule\TelaSelecionarVisualizacaoCompromisso.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="CompromissoModule\TelaSelecionarVisualizacaoCompromisso.Designer.cs">
+      <DependentUpon>TelaSelecionarVisualizacaoCompromisso.cs</DependentUpon>
+    </Compile>
+    <Compile Include="CompromissoModule\TelaVisualizarEditarCompromisso.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="CompromissoModule\TelaVisualizarEditarCompromisso.Designer.cs">
+      <DependentUpon>TelaVisualizarEditarCompromisso.cs</DependentUpon>
+    </Compile>
     <Compile Include="ContatoModule\TelaAdicionarContato.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -83,11 +101,11 @@
     <Compile Include="ContatoModule\TelaExcluirContato.Designer.cs">
       <DependentUpon>TelaExcluirContato.cs</DependentUpon>
     </Compile>
-    <Compile Include="ContatoModule\TelaSelecionarVisulizacaoContato.cs">
+    <Compile Include="ContatoModule\TelaSelecionarVisualizacaoContato.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="ContatoModule\TelaSelecionarVisulizacaoContato.Designer.cs">
-      <DependentUpon>TelaSelecionarVisulizacaoContato.cs</DependentUpon>
+    <Compile Include="ContatoModule\TelaSelecionarVisualizacaoContato.Designer.cs">
+      <DependentUpon>TelaSelecionarVisualizacaoContato.cs</DependentUpon>
     </Compile>
     <Compile Include="ContatoModule\TelaVisualizarEditarContato.cs">
       <SubType>Form</SubType>
@@ -124,14 +142,23 @@
     <EmbeddedResource Include="CompromissoModule\TelaAdicionarCompromisso.resx">
       <DependentUpon>TelaAdicionarCompromisso.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="CompromissoModule\TelaExcluirCompromisso.resx">
+      <DependentUpon>TelaExcluirCompromisso.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="CompromissoModule\TelaSelecionarVisualizacaoCompromisso.resx">
+      <DependentUpon>TelaSelecionarVisualizacaoCompromisso.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="CompromissoModule\TelaVisualizarEditarCompromisso.resx">
+      <DependentUpon>TelaVisualizarEditarCompromisso.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="ContatoModule\TelaAdicionarContato.resx">
       <DependentUpon>TelaAdicionarContato.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="ContatoModule\TelaExcluirContato.resx">
       <DependentUpon>TelaExcluirContato.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="ContatoModule\TelaSelecionarVisulizacaoContato.resx">
-      <DependentUpon>TelaSelecionarVisulizacaoContato.cs</DependentUpon>
+    <EmbeddedResource Include="ContatoModule\TelaSelecionarVisualizacaoContato.resx">
+      <DependentUpon>TelaSelecionarVisualizacaoContato.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="ContatoModule\TelaVisualizarEditarContato.resx">
       <DependentUpon>TelaVisualizarEditarContato.cs</DependentUpon>

@@ -44,12 +44,12 @@ namespace eAgenda.Forms.Shared
         }
         private void btnVisualizarContato_Click(object sender, EventArgs e)
         {
-            TelaSelecionarVisulizacaoContato tela = new TelaSelecionarVisulizacaoContato();
+            TelaSelecionarVisualizacaoContato tela = new TelaSelecionarVisualizacaoContato();
             tela.ShowDialog();
         }
         private void btnEditarContato_Click(object sender, EventArgs e)
         {
-            TelaSelecionarVisulizacaoContato tela = new TelaSelecionarVisulizacaoContato(true);
+            TelaSelecionarVisualizacaoContato tela = new TelaSelecionarVisualizacaoContato(true);
             tela.ShowDialog();
         }
         private void btnExcluirContato_Click(object sender, EventArgs e)
@@ -63,19 +63,22 @@ namespace eAgenda.Forms.Shared
         private void btnAdicionarCompromisso_Click(object sender, EventArgs e)
         {
             TelaAdicionarCompromisso tela = new TelaAdicionarCompromisso();
-            tela.Visible = true;
+            tela.ShowDialog();
         }
         private void btnVisualizarCompromisso_Click(object sender, EventArgs e)
         {
-
+            TelaSelecionarVisualizacaoCompromisso tela = new TelaSelecionarVisualizacaoCompromisso();
+            tela.ShowDialog();
         }
         private void btnEditarCompromisso_Click(object sender, EventArgs e)
         {
-
+            TelaSelecionarVisualizacaoCompromisso tela = new TelaSelecionarVisualizacaoCompromisso();
+            tela.ShowDialog();
         }
         private void btnExcluirCompromisso_Click(object sender, EventArgs e)
         {
-
+            TelaExcluirCompromisso tela = new TelaExcluirCompromisso();
+            tela.ShowDialog();
         }
         #endregion
     }

@@ -7,8 +7,9 @@ namespace eAgenda.Dominio.ContatoModule
 {
     public class Contato : EntidadeBase, IEquatable<Contato>
     {        
-        public Contato(string nome, string email, string telefone, string empresa, string cargo)
+        public Contato(string nome, string email, string telefone, string empresa, string cargo, int id = 0)
         {
+            Id = id;
             Nome = nome;
             Email = email;
             Telefone = telefone;
