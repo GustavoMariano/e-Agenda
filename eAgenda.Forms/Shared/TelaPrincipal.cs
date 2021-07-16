@@ -72,7 +72,7 @@ namespace eAgenda.Forms.Shared
         }
         private void btnEditarCompromisso_Click(object sender, EventArgs e)
         {
-            TelaSelecionarVisualizacaoCompromisso tela = new TelaSelecionarVisualizacaoCompromisso();
+            TelaSelecionarVisualizacaoCompromisso tela = new TelaSelecionarVisualizacaoCompromisso(true);
             tela.ShowDialog();
         }
         private void btnExcluirCompromisso_Click(object sender, EventArgs e)

@@ -224,7 +224,7 @@ namespace eAgenda.Controladores.CompromissoModule
             return Db.GetAll(sqlSelecionarTodosCompromissos, ConverterEmCompromisso);
         }
 
-        public List<Compromisso> SelecionarCompromissosFuturos(DateTime dataInicio, DateTime dataFim)
+        public List<Compromisso> SelecionarCompromissosFuturos(DateTime? dataInicio, DateTime? dataFim)
         {
             var parametros = new Dictionary<string, object>();
 

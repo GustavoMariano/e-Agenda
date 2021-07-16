@@ -80,5 +80,13 @@ namespace eAgenda.Dominio.CompromissoModule
 
             return resultadoValidacao;
         }
+
+        public override string ToString()
+        {
+            if(Contato == null)
+                return Id + "   -   " + Assunto + "   -   " + "N/A Contato" + "   -   " + Local + "   -   " + Link + "   -   " + Data + "   -   " +  HoraInicio + "   -   " + HoraTermino;
+            else
+                return Id + "   -   " + Assunto + "   -   " + Contato.Nome + "   -   " + Local + "   -   " + Link + "   -   " + Data + "   -   " + HoraInicio + "   -   " + HoraTermino;
+        }
     }
 }

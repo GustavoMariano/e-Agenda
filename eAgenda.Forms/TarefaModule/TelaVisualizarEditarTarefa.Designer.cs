@@ -39,16 +39,16 @@ namespace eAgenda.Forms.TarefaModule
             this.btnVoltar = new System.Windows.Forms.Button();
             this.btnSelecionar = new System.Windows.Forms.Button();
             this.gBoxEditar = new System.Windows.Forms.GroupBox();
-            this.lblTitulo = new System.Windows.Forms.Label();
-            this.tBoxTitulo = new System.Windows.Forms.TextBox();
-            this.lblIdTarefa = new System.Windows.Forms.Label();
-            this.lblDataCriacao = new System.Windows.Forms.Label();
-            this.lblDataConclusao = new System.Windows.Forms.Label();
-            this.cBoxPrioridade = new System.Windows.Forms.ComboBox();
-            this.lblPrioridade = new System.Windows.Forms.Label();
-            this.lblPercentual = new System.Windows.Forms.Label();
-            this.numUpDownPercentual = new System.Windows.Forms.NumericUpDown();
             this.lblId = new System.Windows.Forms.Label();
+            this.numUpDownPercentual = new System.Windows.Forms.NumericUpDown();
+            this.lblPercentual = new System.Windows.Forms.Label();
+            this.lblPrioridade = new System.Windows.Forms.Label();
+            this.cBoxPrioridade = new System.Windows.Forms.ComboBox();
+            this.lblDataConclusao = new System.Windows.Forms.Label();
+            this.lblDataCriacao = new System.Windows.Forms.Label();
+            this.lblIdTarefa = new System.Windows.Forms.Label();
+            this.tBoxTitulo = new System.Windows.Forms.TextBox();
+            this.lblTitulo = new System.Windows.Forms.Label();
             this.btnSalvar = new System.Windows.Forms.Button();
             this.tabTarefas.SuspendLayout();
             this.tabTarefasPendentes.SuspendLayout();
@@ -166,21 +166,69 @@ namespace eAgenda.Forms.TarefaModule
             this.gBoxEditar.TabStop = false;
             this.gBoxEditar.Text = "Editar";
             // 
-            // lblTitulo
+            // lblId
             // 
-            this.lblTitulo.AutoSize = true;
-            this.lblTitulo.Location = new System.Drawing.Point(9, 33);
-            this.lblTitulo.Name = "lblTitulo";
-            this.lblTitulo.Size = new System.Drawing.Size(33, 13);
-            this.lblTitulo.TabIndex = 0;
-            this.lblTitulo.Text = "Titulo";
+            this.lblId.AutoSize = true;
+            this.lblId.Location = new System.Drawing.Point(244, 18);
+            this.lblId.Name = "lblId";
+            this.lblId.Size = new System.Drawing.Size(18, 13);
+            this.lblId.TabIndex = 11;
+            this.lblId.Text = "ID";
             // 
-            // tBoxTitulo
+            // numUpDownPercentual
             // 
-            this.tBoxTitulo.Location = new System.Drawing.Point(9, 49);
-            this.tBoxTitulo.Name = "tBoxTitulo";
-            this.tBoxTitulo.Size = new System.Drawing.Size(576, 20);
-            this.tBoxTitulo.TabIndex = 2;
+            this.numUpDownPercentual.Location = new System.Drawing.Point(404, 131);
+            this.numUpDownPercentual.Name = "numUpDownPercentual";
+            this.numUpDownPercentual.Size = new System.Drawing.Size(76, 20);
+            this.numUpDownPercentual.TabIndex = 10;
+            // 
+            // lblPercentual
+            // 
+            this.lblPercentual.AutoSize = true;
+            this.lblPercentual.Location = new System.Drawing.Point(401, 115);
+            this.lblPercentual.Name = "lblPercentual";
+            this.lblPercentual.Size = new System.Drawing.Size(58, 13);
+            this.lblPercentual.TabIndex = 9;
+            this.lblPercentual.Text = "Percentual";
+            // 
+            // lblPrioridade
+            // 
+            this.lblPrioridade.AutoSize = true;
+            this.lblPrioridade.Location = new System.Drawing.Point(9, 115);
+            this.lblPrioridade.Name = "lblPrioridade";
+            this.lblPrioridade.Size = new System.Drawing.Size(54, 13);
+            this.lblPrioridade.TabIndex = 7;
+            this.lblPrioridade.Text = "Prioridade";
+            // 
+            // cBoxPrioridade
+            // 
+            this.cBoxPrioridade.FormattingEnabled = true;
+            this.cBoxPrioridade.Items.AddRange(new object[] {
+            "Baixa",
+            "Normal",
+            "Alta"});
+            this.cBoxPrioridade.Location = new System.Drawing.Point(9, 131);
+            this.cBoxPrioridade.Name = "cBoxPrioridade";
+            this.cBoxPrioridade.Size = new System.Drawing.Size(121, 21);
+            this.cBoxPrioridade.TabIndex = 6;
+            // 
+            // lblDataConclusao
+            // 
+            this.lblDataConclusao.AutoSize = true;
+            this.lblDataConclusao.Location = new System.Drawing.Point(327, 88);
+            this.lblDataConclusao.Name = "lblDataConclusao";
+            this.lblDataConclusao.Size = new System.Drawing.Size(10, 13);
+            this.lblDataConclusao.TabIndex = 5;
+            this.lblDataConclusao.Text = " ";
+            // 
+            // lblDataCriacao
+            // 
+            this.lblDataCriacao.AutoSize = true;
+            this.lblDataCriacao.Location = new System.Drawing.Point(9, 88);
+            this.lblDataCriacao.Name = "lblDataCriacao";
+            this.lblDataCriacao.Size = new System.Drawing.Size(10, 13);
+            this.lblDataCriacao.TabIndex = 4;
+            this.lblDataCriacao.Text = " ";
             // 
             // lblIdTarefa
             // 
@@ -192,69 +240,21 @@ namespace eAgenda.Forms.TarefaModule
             this.lblIdTarefa.TabIndex = 3;
             this.lblIdTarefa.Text = " ";
             // 
-            // lblDataCriacao
+            // tBoxTitulo
             // 
-            this.lblDataCriacao.AutoSize = true;
-            this.lblDataCriacao.Location = new System.Drawing.Point(9, 88);
-            this.lblDataCriacao.Name = "lblDataCriacao";
-            this.lblDataCriacao.Size = new System.Drawing.Size(10, 13);
-            this.lblDataCriacao.TabIndex = 4;
-            this.lblDataCriacao.Text = " ";
+            this.tBoxTitulo.Location = new System.Drawing.Point(9, 49);
+            this.tBoxTitulo.Name = "tBoxTitulo";
+            this.tBoxTitulo.Size = new System.Drawing.Size(576, 20);
+            this.tBoxTitulo.TabIndex = 2;
             // 
-            // lblDataConclusao
+            // lblTitulo
             // 
-            this.lblDataConclusao.AutoSize = true;
-            this.lblDataConclusao.Location = new System.Drawing.Point(327, 88);
-            this.lblDataConclusao.Name = "lblDataConclusao";
-            this.lblDataConclusao.Size = new System.Drawing.Size(10, 13);
-            this.lblDataConclusao.TabIndex = 5;
-            this.lblDataConclusao.Text = " ";
-            // 
-            // cBoxPrioridade
-            // 
-            this.cBoxPrioridade.FormattingEnabled = true;
-            this.cBoxPrioridade.Items.AddRange(new object[] {
-            "Baixa",
-            "Normal",
-            "Alta"});
-            this.cBoxPrioridade.Location = new System.Drawing.Point(9, 121);
-            this.cBoxPrioridade.Name = "cBoxPrioridade";
-            this.cBoxPrioridade.Size = new System.Drawing.Size(121, 21);
-            this.cBoxPrioridade.TabIndex = 6;
-            // 
-            // lblPrioridade
-            // 
-            this.lblPrioridade.AutoSize = true;
-            this.lblPrioridade.Location = new System.Drawing.Point(9, 105);
-            this.lblPrioridade.Name = "lblPrioridade";
-            this.lblPrioridade.Size = new System.Drawing.Size(54, 13);
-            this.lblPrioridade.TabIndex = 7;
-            this.lblPrioridade.Text = "Prioridade";
-            // 
-            // lblPercentual
-            // 
-            this.lblPercentual.AutoSize = true;
-            this.lblPercentual.Location = new System.Drawing.Point(401, 105);
-            this.lblPercentual.Name = "lblPercentual";
-            this.lblPercentual.Size = new System.Drawing.Size(58, 13);
-            this.lblPercentual.TabIndex = 9;
-            this.lblPercentual.Text = "Percentual";
-            // 
-            // numUpDownPercentual
-            // 
-            this.numUpDownPercentual.Location = new System.Drawing.Point(404, 121);
-            this.numUpDownPercentual.Name = "numUpDownPercentual";
-            this.numUpDownPercentual.Size = new System.Drawing.Size(76, 20);
-            this.numUpDownPercentual.TabIndex = 10;
-            // 
-            // lblId
-            // 
-            this.lblId.AutoSize = true;
-            this.lblId.Location = new System.Drawing.Point(244, 18);
-            this.lblId.Name = "lblId";
-            this.lblId.Size = new System.Drawing.Size(18, 13);
-            this.lblId.TabIndex = 11;
-            this.lblId.Text = "ID";
+            this.lblTitulo.AutoSize = true;
+            this.lblTitulo.Location = new System.Drawing.Point(9, 33);
+            this.lblTitulo.Name = "lblTitulo";
+            this.lblTitulo.Size = new System.Drawing.Size(33, 13);
+            this.lblTitulo.TabIndex = 0;
+            this.lblTitulo.Text = "Titulo";
             // 
             // btnSalvar
             // 
