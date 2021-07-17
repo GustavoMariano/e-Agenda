@@ -18,23 +18,16 @@ namespace eAgenda.Forms.CompromissoModule
         public TelaAdicionarCompromisso()
         {
             InitializeComponent();
-
-            List<Contato> todosContatos = controladorContato.SelecionarTodos();
-            foreach (var item in todosContatos)
-            {
-                lBoxContatos.Items.Add(item.ToString());
-            }
+            CarregaContatos();
         }
+
+        #region Ações dos Botões
         private void btnAdicionar_Click(object sender, EventArgs e)
         {
             string resultadoInserção = "";
             string link = "";
             string localizacao = "";
-
-            if (rBtnPresencial.Checked == true)
-                localizacao = tBoxLinkLocalizacao.Text;
-            else
-                link = tBoxLinkLocalizacao.Text;
+            VerificaBotaoLinkLocalizacao(ref link, ref localizacao);
 
             if (rBtnNaoPossuiContato.Checked == true)
             {
@@ -43,13 +36,12 @@ namespace eAgenda.Forms.CompromissoModule
             }
             else
             {
-                string strContato = lBoxContatos.SelectedItem.ToString().Replace("   ", "");
-                string[] propContato = strContato.Split('-');
-                contato = new Contato(propContato[1], propContato[2], propContato[3], propContato[4], propContato[5], Convert.ToInt32(propContato[0]));
+                SelecionaContato();
                 compromisso = new Compromisso(tBoxAssunto.Text, localizacao, link, dataInicio.Value, dateTPHoraInicio.Value.TimeOfDay, dateTPHoraConclusao.Value.TimeOfDay, contato);
                 resultadoInserção = controlador.InserirNovo(compromisso);
             }
-            if(resultadoInserção == "ESTA_VALIDO")
+
+            if (resultadoInserção == "ESTA_VALIDO")
                 MessageBox.Show("Compromisso adicionado com sucesso!!");
             else
                 MessageBox.Show(resultadoInserção);
@@ -85,5 +77,28 @@ namespace eAgenda.Forms.CompromissoModule
         {
             lBoxContatos.Enabled = false;
         }
+        #endregion
+
+        #region Métodos Privados
+        private void CarregaContatos()
+        {
+            List<Contato> todosContatos = controladorContato.SelecionarTodos();
+            foreach (var item in todosContatos)
+                lBoxContatos.Items.Add(item.ToString());
+        }
+        private void SelecionaContato()
+        {
+            string strContato = lBoxContatos.SelectedItem.ToString().Replace("   ", "");
+            string[] propContato = strContato.Split('-');
+            contato = new Contato(propContato[1], propContato[2], propContato[3], propContato[4], propContato[5], Convert.ToInt32(propContato[0]));
+        }
+        private void VerificaBotaoLinkLocalizacao(ref string link, ref string localizacao)
+        {
+            if (rBtnPresencial.Checked == true)
+                localizacao = tBoxLinkLocalizacao.Text;
+            else
+                link = tBoxLinkLocalizacao.Text;
+        }
+        #endregion
     }
 }

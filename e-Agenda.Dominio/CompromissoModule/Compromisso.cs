@@ -83,10 +83,12 @@ namespace eAgenda.Dominio.CompromissoModule
 
         public override string ToString()
         {
-            if(Contato == null)
-                return Id + "   -   " + Assunto + "   -   " + "N/A Contato" + "   -   " + Local + "   -   " + Link + "   -   " + Data + "   -   " +  HoraInicio + "   -   " + HoraTermino;
+            TimeSpan horaInicio = new TimeSpan(HoraInicio.Hours, HoraInicio.Minutes, HoraInicio.Seconds);
+            TimeSpan horaFinal = new TimeSpan(HoraTermino.Hours, HoraTermino.Minutes, HoraTermino.Seconds);
+            if (Contato == null)
+                return Id + "   -   " + Assunto + "   -   " + "N/A Contato" + "   -   " + Local + "   -   " + Link + "   -   " + Data.Date.ToString("yyyy/MM/dd") + "   -   " + horaInicio + "   -   " + horaFinal;
             else
-                return Id + "   -   " + Assunto + "   -   " + Contato.Nome + "   -   " + Local + "   -   " + Link + "   -   " + Data + "   -   " + HoraInicio + "   -   " + HoraTermino;
+                return Id + "   -   " + Assunto + "   -   " + Contato.Nome + "   -   " + Local + "   -   " + Link + "   -   " + Data.Date.ToString("yyyy/MM/dd") + "   -   " + horaInicio + "   -   " + horaFinal;
         }
     }
 }
