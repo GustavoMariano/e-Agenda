@@ -12,56 +12,53 @@ namespace eAgenda.Controladores.Shared
     public static class Db
     {
         private static readonly string connectionString = "";
-
+        private static string banco = "";
+        private static IDbCommand command;
+        private static IDbConnection connection;
         static Db()
         {
-            connectionString = ConfigurationManager.ConnectionStrings["DBeAgenda"].ConnectionString;
+            banco = ConfigurationManager.AppSettings["bancoSelecionado"];
+            connectionString = ConfigurationManager.ConnectionStrings[banco].ConnectionString;
+
+            if (banco == "SQLite")
+            {
+                connection = new SQLiteConnection(connectionString);
+                SQLiteConnection.ClearAllPools();
+            }
+            else
+            {
+                connection = new SqlConnection(connectionString);
+                SqlConnection.ClearAllPools();
+            }
+        }
+        public static IDbCommand CriaSql(string sql, IDbConnection connection)
+        {
+            IDbCommand comando;
+
+            if (banco == "SQLite")
+                comando = new SQLiteCommand(sql, (SQLiteConnection)connection);
+            else
+                comando = new SqlCommand(sql, (SqlConnection)connection);
+
+            return comando;
         }
 
         public static int Insert(string sql, Dictionary<string, object> parameters)
         {
-            if (connectionString.Contains("SQLite"))
-            {
-                SQLiteConnection connection = new SQLiteConnection(connectionString);
-                SQLiteCommand command = new SQLiteCommand(sql.AppendSelectIdentityLite(), connection);
-                command.SetParameterSQLite(parameters);
-                connection.Open();
-                int id = Convert.ToInt32(command.ExecuteScalar());
-                connection.Close();
-                return id;
-            }
-            else
-            {
-                SqlConnection connection = new SqlConnection(connectionString);
-                SqlCommand command = new SqlCommand(sql.AppendSelectIdentity(), connection);
-                command.SetParameters(parameters);
-                connection.Open();
-                int id = Convert.ToInt32(command.ExecuteScalar());
-                connection.Close();
-                return id;
-            }
+            command = CriaSql(sql.AppendSelectIdentity(), connection);
+            connection.Open();
+            SetParameters(parameters);
+            int id = Convert.ToInt32(command.ExecuteScalar());
+            connection.Close();
+            return id;
         }
-
         public static void Update(string sql, Dictionary<string, object> parameters = null)
         {
-            if (connectionString.Contains("SQLite"))
-            {
-                SQLiteConnection connection = new SQLiteConnection(connectionString);
-                SQLiteCommand command = new SQLiteCommand(sql, connection);
-                command.SetParameterSQLite(parameters);
-                connection.Open();
-                command.ExecuteNonQuery();
-                connection.Close();
-            }
-            else
-            {
-                SqlConnection connection = new SqlConnection(connectionString);
-                SqlCommand command = new SqlCommand(sql, connection);
-                command.SetParameters(parameters);
-                connection.Open();
-                command.ExecuteNonQuery();
-                connection.Close();
-            }
+            command = CriaSql(sql, connection);
+            connection.Open();
+            SetParameters(parameters);
+            command.ExecuteNonQuery();
+            connection.Close();
         }
 
         public static void Delete(string sql, Dictionary<string, object> parameters)
@@ -71,135 +68,74 @@ namespace eAgenda.Controladores.Shared
 
         public static List<T> GetAll<T>(string sql, ConverterDelegate<T> convert, Dictionary<string, object> parameters = null)
         {
-            if (connectionString.Contains("SQLite"))
+            command = CriaSql(sql, connection);
+            connection.Open();
+            SetParameters(parameters);
+            var list = new List<T>();
+            var reader = command.ExecuteReader();
+            while (reader.Read())
             {
-                SQLiteConnection connection = new SQLiteConnection(connectionString);
-                SQLiteCommand command = new SQLiteCommand(sql, connection);
-                command.SetParameterSQLite(parameters);
-                connection.Open();
-                var list = new List<T>();
-                var reader = command.ExecuteReader();
-                while (reader.Read())
-                {
-                    var obj = convert(reader);
-                    list.Add(obj);
-                }
-                reader.Close();
-                connection.Close();
-                return list;
+                var obj = convert(reader);
+                list.Add(obj);
             }
-            else
-            {
-                SqlConnection connection = new SqlConnection(connectionString);
-                SqlCommand command = new SqlCommand(sql, connection);
-                command.SetParameters(parameters);
-                connection.Open();
-                var list = new List<T>();
-                var reader = command.ExecuteReader();
-                while (reader.Read())
-                {
-                    var obj = convert(reader);
-                    list.Add(obj);
-                }
-                connection.Close();
-                return list;
-            }
+            reader.Close();
+            connection.Close();
+            return list;
         }
 
         public static T Get<T>(string sql, ConverterDelegate<T> convert, Dictionary<string, object> parameters)
         {
-            if (connectionString.Contains("SQLite"))
-            {
-                SQLiteConnection connection = new SQLiteConnection(connectionString);
-                SQLiteCommand command = new SQLiteCommand(sql, connection);
-                command.SetParameterSQLite(parameters);
-                connection.Open();
-                T t = default;
-                var reader = command.ExecuteReader();
-                if (reader.Read())
-                    t = convert(reader);
-                reader.Close();
-                connection.Close();
-                return t;
-            }
-            else
-            {
-                SqlConnection connection = new SqlConnection(connectionString);
-                SqlCommand command = new SqlCommand(sql, connection);
-                command.SetParameters(parameters);
-                connection.Open();
-                T t = default;
-                var reader = command.ExecuteReader();
-                if (reader.Read())
-                    t = convert(reader);
-                connection.Close();
-                return t;
-            }
+            command = CriaSql(sql, connection);
+            connection.Open();
+            SetParameters(parameters);
+            T t = default;
+            var reader = command.ExecuteReader();
+            if (reader.Read())
+                t = convert(reader);
+            reader.Close();
+            connection.Close();
+            return t;
         }
 
         public static bool Exists(string sql, Dictionary<string, object> parameters)
         {
-            if (connectionString.Contains("SQLite"))
-            {
-                SQLiteConnection connection = new SQLiteConnection(connectionString);
-                SQLiteCommand command = new SQLiteCommand(sql, connection);
-                command.SetParameterSQLite(parameters);
-                connection.Open();
-                int numberRows = Convert.ToInt32(command.ExecuteScalar());
-                connection.Close();
-                return numberRows > 0;
-            }
-            else
-            {
-                SqlConnection connection = new SqlConnection(connectionString);
-                SqlCommand command = new SqlCommand(sql, connection);
-                command.SetParameters(parameters);
-                connection.Open();
-                int numberRows = Convert.ToInt32(command.ExecuteScalar());
-                connection.Close();
-                return numberRows > 0;
-            }
+            command = CriaSql(sql, connection);
+            connection.Open();
+            SetParameters(parameters);
+            int numberRows = Convert.ToInt32(command.ExecuteScalar());
+            connection.Close();
+            return numberRows > 0;
         }
         #region Métodos Privados
-        private static void SetParameters(this SqlCommand command, Dictionary<string, object> parameters)
+        private static void SetParameters(Dictionary<string, object> parameters)
         {
-            if (parameters == null || parameters.Count == 0)
-                return;
-
-            foreach (var parameter in parameters)
+            if (parameters != null)
             {
-                string name = parameter.Key;
+                foreach (var parameter in parameters)
+                {
+                    string name = parameter.Key;
 
-                object value = parameter.Value.IsNullOrEmpty() ? DBNull.Value : parameter.Value;
+                    object value = parameter.Value.IsNullOrEmpty() ? DBNull.Value : parameter.Value;
 
-                SqlParameter dbParameter = new SqlParameter(name, value);
-
-                command.Parameters.Add(dbParameter);
+                    if (banco == "SQLite")
+                    {
+                        SQLiteParameter dbParameter = new SQLiteParameter(name, value);
+                        command.Parameters.Add(dbParameter);
+                    }
+                    else
+                    {
+                        SqlParameter dbParameter = new SqlParameter(name, value);
+                        command.Parameters.Add(dbParameter);
+                    }
+                }
             }
-        }
-        private static void SetParameterSQLite(this SQLiteCommand command, Dictionary<string, object> parameters)
-        {
-            if (parameters == null || parameters.Count == 0)
-                return;
-
-            foreach (var parameter in parameters)
-            {
-                string name = parameter.Key;
-
-                object value = parameter.Value.IsNullOrEmpty() ? DBNull.Value : parameter.Value;
-
-                SQLiteParameter dbParameter = new SQLiteParameter(name, value);
-
-                command.Parameters.Add(dbParameter);
-            }
-        }
-        private static string AppendSelectIdentityLite(this string sql)
-        {
-            return sql + ";SELECT last_insert_rowid()";
         }
         private static string AppendSelectIdentity(this string sql)
         {
-            return sql + ";SELECT SCOPE_IDENTITY()";
+            if (connectionString.Contains("SQLite"))
+                return sql + ";SELECT last_insert_rowid()";
+            else
+                return sql + ";SELECT SCOPE_IDENTITY()";
         }
         public static bool IsNullOrEmpty(this object value)
         {
