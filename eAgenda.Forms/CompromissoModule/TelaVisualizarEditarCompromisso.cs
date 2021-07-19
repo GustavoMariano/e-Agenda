@@ -141,18 +141,14 @@ namespace eAgenda.Forms.CompromissoModule
                 compromissosBanco = controladorCompromisso.SelecionarCompromissosFuturos(dataInicial, dataFinal);
 
             foreach (var item in compromissosBanco)
-            {
                 lBoxCompromissos.Items.Add(item.ToString());
-            }
         }
         private void MostrarContato()
         {
             contatosBanco = controladorContato.SelecionarTodos();
 
             foreach (var item in contatosBanco)
-            {
                 lBoxContatos.Items.Add(item.ToString());
-            }
         }
         private void SelecionaContato()
         {
