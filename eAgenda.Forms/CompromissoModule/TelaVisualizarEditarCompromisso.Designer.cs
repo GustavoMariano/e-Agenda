@@ -34,6 +34,8 @@ namespace eAgenda.Forms.CompromissoModule
             this.btnAtualizar = new System.Windows.Forms.Button();
             this.btnVoltar = new System.Windows.Forms.Button();
             this.gBoxEditarCompromisso = new System.Windows.Forms.GroupBox();
+            this.lblIdContato = new System.Windows.Forms.Label();
+            this.lblId = new System.Windows.Forms.Label();
             this.gBoxAdicionarContato = new System.Windows.Forms.GroupBox();
             this.lblAdicionarContato = new System.Windows.Forms.Label();
             this.lBoxContatos = new System.Windows.Forms.ListBox();
@@ -56,8 +58,6 @@ namespace eAgenda.Forms.CompromissoModule
             this.tBoxAssunto = new System.Windows.Forms.TextBox();
             this.lblAssunto = new System.Windows.Forms.Label();
             this.btnSelecionar = new System.Windows.Forms.Button();
-            this.lblId = new System.Windows.Forms.Label();
-            this.lblIdContato = new System.Windows.Forms.Label();
             this.gBoxEditarCompromisso.SuspendLayout();
             this.gBoxAdicionarContato.SuspendLayout();
             this.SuspendLayout();
@@ -128,6 +128,25 @@ namespace eAgenda.Forms.CompromissoModule
             this.gBoxEditarCompromisso.TabIndex = 9;
             this.gBoxEditarCompromisso.TabStop = false;
             this.gBoxEditarCompromisso.Text = "Editar";
+            // 
+            // lblIdContato
+            // 
+            this.lblIdContato.AutoSize = true;
+            this.lblIdContato.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblIdContato.Location = new System.Drawing.Point(353, 14);
+            this.lblIdContato.Name = "lblIdContato";
+            this.lblIdContato.Size = new System.Drawing.Size(11, 15);
+            this.lblIdContato.TabIndex = 28;
+            this.lblIdContato.Text = " ";
+            // 
+            // lblId
+            // 
+            this.lblId.AutoSize = true;
+            this.lblId.Location = new System.Drawing.Point(326, 16);
+            this.lblId.Name = "lblId";
+            this.lblId.Size = new System.Drawing.Size(21, 13);
+            this.lblId.TabIndex = 27;
+            this.lblId.Text = "ID:";
             // 
             // gBoxAdicionarContato
             // 
@@ -341,25 +360,6 @@ namespace eAgenda.Forms.CompromissoModule
             this.btnSelecionar.Text = "Selecionar";
             this.btnSelecionar.UseVisualStyleBackColor = true;
             this.btnSelecionar.Click += new System.EventHandler(this.btnSelecionar_Click);
-            // 
-            // lblId
-            // 
-            this.lblId.AutoSize = true;
-            this.lblId.Location = new System.Drawing.Point(326, 16);
-            this.lblId.Name = "lblId";
-            this.lblId.Size = new System.Drawing.Size(21, 13);
-            this.lblId.TabIndex = 27;
-            this.lblId.Text = "ID:";
-            // 
-            // lblIdContato
-            // 
-            this.lblIdContato.AutoSize = true;
-            this.lblIdContato.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblIdContato.Location = new System.Drawing.Point(353, 14);
-            this.lblIdContato.Name = "lblIdContato";
-            this.lblIdContato.Size = new System.Drawing.Size(11, 15);
-            this.lblIdContato.TabIndex = 28;
-            this.lblIdContato.Text = " ";
             // 
             // TelaVisualizarEditarCompromisso
             // 
